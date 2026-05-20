@@ -1,0 +1,47 @@
+1.What is TypeScript?
+=> Typescript is a superset of Javascript that adds static typing, interfaces,generics, and other feature to improvecode quality and developer experience.
+
+2. Difference Between JavaScript and TypeScript?
+=>
+JavaScript -> Dynamically Typed, Error Found at runtime, No Interfaces,No type checking ,Harder for large apps. 
+Typescript -> Statically typed, Error found during development type, support interfaces, strong type checking, better for scalable apps.
+
+3. What is Static Typing?
+=>
+Static typing means variable types are chceked before execution. eg: let age:number =25;
+
+4.Difference between any and unknown?
+=>
+any-> disable type checking completely.
+unknown -> safer version of any. eg: ```let value: unknown = "hello"
+
+if (typeof value === "string") {
+  console.log(value.toUpperCase())
+} 
+
+```
+
+5.What is a union type?
+=> A variable can hold multiple possible Types.
+
+6.What is a type alias?
+=> Used to create resusable custom types.
+```
+type User = {
+  name: string
+  age: number
+}
+```
+
+7. Difference between interface and type?
+| Interface                    | Type                          |
+| ---------------------------- | ----------------------------- |
+| Extendable                   | Flexible                      |
+| Object-focused               | Works with unions, primitives |
+| Supports declaration merging | Does not                      |
+
+8.How do you type functions?
+=> Parameters and return type are typed.
+function add(a: number, b: number): number {
+  return a + b
+}
