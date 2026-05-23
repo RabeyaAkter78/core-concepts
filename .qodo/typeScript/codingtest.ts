@@ -39,7 +39,26 @@ type Product = {
   price: number;
 };
 
-// eg:
+// type Narrowing: handle multiple types safely.
+// typeof ,instanceof, in operator ,truthy narrowing, custom type guards.
+// custom type guards: user defined functions that narrow types based on specific conditions.
+
+function formatValue(value: string | number) {
+  if (typeof value === "string") {
+    return value.toUpperCase();
+  }
+  return value.toFixed(2);
+}
+
+// type Guards:
+function isString(value: unknown): value is string {
+  return typeof value === "string";
+}
+
+// Assertion: tells the compiler to treat a value as a specific type. as keyword, non-null assertion
+
+let value: unknown = "hello";
+let Alength: number = (value as string).length;
 
 // Array Typing:
 
@@ -100,3 +119,58 @@ function updateUser(user: Partial<RUser>) {
 }
 
 // Pick, Omit,Record Utility Type,Async Function Typing,Class Example,Access Modifiers,Abstract Class
+
+// pic: select specific fields from a type.
+
+interface UserPick {
+  id: number;
+  name: string;
+  email: string;
+}
+type UserPreview = Pick<UserPick, "id" | "name">;
+
+// Omit: remove specific fields from a type.
+
+type UserWithoutEmail = Omit<UserPick, "email">;
+
+// Record: create a type with specific keys and values ,dynamic object keys.
+
+type Role = "admin" | "user" | "guest";
+type RPermissions = Record<Role, string[]>;
+
+// Async Function Typing:
+
+async function getUser(): Promise<UserPick> {
+  return {
+    id: 1,
+    name: "John Doe",
+    email: "zLd2o@example.com",
+  };
+}
+
+
+// Infer type: extract types from other types, conditional types.
+
+type IReturnType<T> = T extends (...args: any[]) => infer R ? R : never; // here infer R extracts the return type of the function T.
+
+// REact+Typescript:
+// props typing, state typing, event handling, context API, custom hooks with types, higher-order components (HOC) with types, render props with types.
+
+// props typing:
+
+type props={
+  title:string;
+}
+
+// state typing:
+const[count,setCount]=useState<number | string>(0);
+
+// children typing:
+children: React.ReactNode;
+
+// Api response typing:
+
+interface ApiResponse<T> {
+  success: boolean;
+  data: T;
+}
