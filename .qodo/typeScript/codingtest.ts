@@ -1,4 +1,4 @@
-// veriable type:
+// veriable type HI-Rabeya:
 
 let age: number = 26;
 
